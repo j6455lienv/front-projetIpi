@@ -1,4 +1,4 @@
-#JVE - Installation sur post en local
+# JVE - Installation sur post en local
 
 Avant tout, installer npm et node derniere version</br>
 Puis, installer toutes les dépendences</br>
@@ -6,6 +6,8 @@ Puis, installer toutes les dépendences</br>
     * npm init
     * npm install --save react-create-app react-scripts 
     
+
+## JVE - fin commentaires
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
