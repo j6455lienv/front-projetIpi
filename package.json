@@ -1,15 +1,16 @@
 {
-  "name": "nutrimeal-front",
+  "name": "package.json",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
     "ajv": "^6.4.0",
     "create-react-app": "^1.5.2",
     "install": "^0.11.0",
-    "material-ui": "^0.20.0",
+    "material-ui": "^1.0.0-beta.44",
     "material-ui-icons": "^1.0.0-beta.36",
     "npm": "^6.0.0",
     "react": "^16.3.2",
+    "react-create-app": "^2.0.6",
     "react-dom": "^16.3.2",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2",
