@@ -6,6 +6,7 @@ Puis, installer toutes les dépendences</br>
     * npm init
     * npm install --save react-create-app react-scripts
     * npm install --save material-ui@next
+    * npm install --save material-ui-icons
     
 
 ## JVE - fin commentaires

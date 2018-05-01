@@ -1,73 +1,76 @@
-import React, { Component, Fragment } from 'react';
-import { Header, Footer } from './Layouts'
+import React, {Component, Fragment} from 'react';
+import {Header, Footer} from './Layouts'
 import Exercices from './Exercices'
-import { muscles, exercises } from '../store.js'
+import {muscles, exercises} from '../store.js'
 
 export default class extends Component {
-	state = {
-		exercises,
-		exercise: {}
-	}
+  state = {
+    exercises,
+    exercise: {}
+  }
 
-	getExercisesByMuscles() {
-		return Object.entries(
-			this.state.exercises.reduce((exercises, exercise) => {
-				const { muscles } = exercise
+  getExercisesByMuscles() {
+    const initExercises = muscles.reduce((exercises, category) => ({
+      ...exercises,
+      [category]: []
+    }), {})
 
-				exercises[muscles] = exercises[muscles]
-					? [...exercises[muscles], exercise]
-					: [exercise]
+    console.log(muscles, initExercises)
 
-				return exercises
-			}, {})
-		)
-	}
+    return Object.entries(this.state.exercises.reduce((exercises, exercise) => {
+      const {muscles} = exercise
 
-	handleCategorySelected = category => {
-		this.setState({
-			category
-		})
-	}
+      exercises[muscles] = [
+        ...exercises[muscles],
+        exercise
+      ]
 
-	handleExercisesSelected = id => {
-		this.setState(({ exercises }) => ({
-			exercise: exercises.find(ex => ex.id === id)
-		}))
-	}
+      return exercises
+    }, initExercises))
+  }
 
-	handleExerciseCreate = exercise => {
-		this.setState(({ exercises }) => ({
-			exercises: [
-				...exercises,
-				exercise
-			]
-		}))
-	}
+  handleCategorySelected = category => {
+    this.setState({category})
+  }
 
-	render() {
-		const exercises = this.getExercisesByMuscles(),
-			{ category, exercise } = this.state
+  handleExercisesSelected = id => {
+    this.setState(({exercises}) => ({
+      exercise: exercises.find(ex => ex.id === id)
+    }))
+  }
 
-		return <Fragment>
-			<Header 
-				muscles={muscles}
-				onExerciseCreate={this.handleExerciseCreate}
-			/>
+  handleExerciseCreate = exercise => {
+    this.setState(({exercises}) => ({
+      exercises: [
+        ...exercises,
+        exercise
+      ]
+    }))
+  }
 
-			<Exercices
-				exercise={exercise}
-				category={category}
-				exercises={exercises}
-				onSelect={this.handleExercisesSelected}
-			/>
+  handleExerciseDelete = id => {
+    this.setState(({exercises}) => ({
+      exercises: exercises.filter(ex => ex.id !== id)
+    }))
+  }
 
-			<Footer
-				category={category}
-				muscles={muscles}
-				onSelect={this.handleCategorySelected}
-			/>
-		</Fragment>
-	}
+  render() {
+    const exercises = this.getExercisesByMuscles(), {category, exercise} = this.state
+
+    return <Fragment>
+      <Header muscles={muscles} onExerciseCreate={this.handleExerciseCreate}/>
+
+      <Exercices
+        exercise={exercise}
+        category={category}
+        exercises={exercises}
+        onSelect={this.handleExercisesSelected}
+        onDelete={this.handleExerciseDelete}/>
+
+      <Footer
+        category={category}
+        muscles={muscles}
+        onSelect={this.handleCategorySelected}/>
+    </Fragment>
+  }
 }
-
-
