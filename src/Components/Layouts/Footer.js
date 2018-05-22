@@ -7,9 +7,9 @@ export default({muscles, category, onSelect}) => {
     ? muscles.findIndex(group => group === category) + 1
     : 0
 
-  const onIndexSelect = (e, index) => onSelect(index === 0
-    ? ''
-    : muscles[index - 1])
+  // const onIndexSelect = (e, index) => onSelect(index === 0
+  //   ? ''
+  //   : muscles[index - 1])
 
   return <Paper>
     <Tabs

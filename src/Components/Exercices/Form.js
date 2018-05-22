@@ -15,14 +15,18 @@ export default withStyles(styles)(class extends Component {
   state = this.getInitState()
 
   getInitState() {
-    const {exercise} = this.props
-    return exercise
-      ? exercise
-      : {
+    const { exercise } = this.props
+    return exercise ? exercise : {
         title: '',
         description: '',
         muscles: ''
       }
+  }
+
+  componentWillReceiveProps({ exercise }) {
+    this.setState({
+      ...exercise
+    })
   }
 
   handleChange = name => ({target: {
@@ -30,30 +34,18 @@ export default withStyles(styles)(class extends Component {
     }}) => this.setState({[name]: value})
 
   handleSubmit = () => {
-    const {exercise} = this.state
-
-    this
-      .props
-      .onSubmit({
-        ...exercise,
-        id: exercise
-          .title
-          .toLocaleLowerCase()
-          .replace(/ /g, '-')
-      })
-
-    this.setState({
-      open: false,
-      exercise: {
-        title: '',
-        description: '',
-        muscles: ''
-      }
+    
+    this.props.onSubmit({
+      id: this.state.title.toLocaleLowerCase().replace(/ /g, '-'),
+      ...this.state
     })
+
+    this.setState(this.getInitState())
   }
 
   render() {
-    const {title, description, muscles} = this.state, {classes, muscles: categories} = this.props
+    const { title, description, muscles } = this.state, 
+          { classes, exercise, muscles: categories  } = this.props
 
     return <form>
       <TextField
@@ -85,7 +77,7 @@ export default withStyles(styles)(class extends Component {
         className={classes.FormControl}/>
       <br/>
       <Button color="primary" variant="raised" onClick={this.handleSubmit}>
-        Create
+        { exercise ? 'Edit' : 'Create' }
       </Button>
     </form>
   }

@@ -32,18 +32,23 @@ export default class extends Component {
   handleCategorySelected = category => this.setState({category})
 
   handleExercisesSelected = id => this.setState(({exercises}) => ({
-    exercise: exercises.find(ex => ex.id === id)
+    exercise: exercises.find(ex => ex.id === id),
+    editMode: false
   }))
 
-  handleExerciseCreate = exercise => this.setState(({exercises}) => ({
-    exercises: [
-      ...exercises,
-      exercise
+  handleExerciseCreate = exercise => 
+    this.setState(({ exercises }) => ({
+      exercises: [
+        ...exercises,
+        exercise
     ]
   }))
 
-  handleExerciseDelete = id => this.setState(({exercises}) => ({
-    exercises: exercises.filter(ex => ex.id !== id)
+  handleExerciseDelete = id => 
+    this.setState(({exercises}) => ({
+      exercises: exercises.filter(ex => ex.id !== id),
+      editMode: false,
+      exercise: {}
   }))
 
   handleExerciseSelectEdit = id => this.setState(({exercises}) => ({
@@ -52,11 +57,12 @@ export default class extends Component {
   }))
 
   handleExerciseEdit = exercise => 
-    this.setState(({exercises}) => ({
+    this.setState(({ exercises }) => ({
       exercises: [
-        ...exercises.filter(ex => ex.id !== exercises.id),
+        ...exercises.filter(ex => ex.id !== exercise.id),
         exercise
-      ]
+      ],
+      exercise
     }))
 
   render() {

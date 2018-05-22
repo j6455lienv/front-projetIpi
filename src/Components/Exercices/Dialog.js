@@ -1,6 +1,6 @@
 import React, {Component, Fragment} from 'react'
 import {Dialog, Button} from 'material-ui'
-import {DialogActions, DialogContent, DialogContentText, DialogTitle} from 'material-ui/Dialog'
+import {DialogContent, DialogContentText, DialogTitle} from 'material-ui/Dialog'
 import {Add} from 'material-ui-icons'
 import Form from './Form'
 
@@ -15,8 +15,14 @@ export default class extends Component {
     })
   }
 
+  handleFormSubmit = exercise => {
+    this.handleToggle()
+
+    this.props.onCreate(exercise)
+  }
+
   render() {
-    const {open} = this.state, {muscles, onCreate} = this.props
+    const {open} = this.state, {muscles} = this.props
 
     return <Fragment>
 
@@ -24,15 +30,21 @@ export default class extends Component {
         <Add/>
       </Button>
 
-      <Dialog open={this.state.open} onClose={this.handleToggle}>
-        <DialogTitle id="form-dialog-title">
+      <Dialog 
+        open={open} 
+        onClose={this.handleToggle}
+      >
+        <DialogTitle>
           Create a new Exercice
         </DialogTitle>
+
         <DialogContent>
           <DialogContentText>
             Please fill out the form below.
           </DialogContentText>
-          <Form muscles={muscles} onSubmit={onCreate}/>
+          <Form 
+            muscles={muscles} 
+            onSubmit={this.handleFormSubmit}/>
         </DialogContent>
       </Dialog>
     </Fragment>
