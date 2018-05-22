@@ -1,5 +1,5 @@
 # JVE - Installation sur post en local
-
+* url tuto : https://www.youtube.com/channel/UCUDLFXXKG6zSA1d746rbzLQ/videos
 Avant tout, installer npm et node derniere version</br>
 Puis, installer toutes les dépendences</br>
   * Dans un terminal, et dans le dossier de l'app
