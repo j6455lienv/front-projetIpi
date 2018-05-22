@@ -1,8 +1,7 @@
 import React, {Fragment} from 'react'
-import {Grid, Paper, Typography, List, IconButton} from 'material-ui'
+import {Grid, Paper, Typography, List, IconButton} from '@material-ui/core'
 import {ListItem, ListItemText, ListItemSecondaryAction} from 'material-ui/List'
-import {Edit} from 'material-ui-icons'
-import {DeleteForever} from 'material-ui-icons'
+import { Edit, DeleteForever } from '@material-ui/icons'
 import Form from './Form'
 
 const styles = {

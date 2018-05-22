@@ -5,6 +5,8 @@ Puis, installer toutes les dépendences</br>
   * Dans un terminal, et dans le dossier de l'app
     * npm init
     * npm install --save react-create-app react-scripts
+    * npm install "@material-ui/core"
+    * npm install "@material-ui/icons" 
     * npm install --save material-ui@next
     * npm install --save material-ui-icons
     

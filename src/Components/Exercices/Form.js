@@ -5,7 +5,7 @@ import {InputLabel} from 'material-ui/Input'
 import {MenuItem} from 'material-ui/Menu'
 import {withStyles} from 'material-ui/styles'
 
-const styles = theme => ({
+const styles = theme => console.log(theme) || ({
   FormControl: {
     width: 300
   }
@@ -23,10 +23,8 @@ export default withStyles(styles)(class extends Component {
       }
   }
 
-  componentWillReceiveProps({ exercise }) {
-    this.setState({
-      ...exercise
-    })
+  static getDerivedStateFromProps({ exercise }) {
+    return exercise || null
   }
 
   handleChange = name => ({target: {
