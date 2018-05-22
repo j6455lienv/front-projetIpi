@@ -5,9 +5,13 @@ import {InputLabel} from 'material-ui/Input'
 import {MenuItem} from 'material-ui/Menu'
 import {withStyles} from 'material-ui/styles'
 
-const styles = theme => console.log(theme) || ({
+const styles = theme => ({
   FormControl: {
     width: 300
+  },
+
+  xsFormControl: {
+    width: 250
   }
 })
 
