@@ -8,7 +8,6 @@ Puis, installer toutes les dépendences</br>
     * npm install "@material-ui/core"
     * npm install "@material-ui/icons" 
     * npm install --save material-ui@next
-    * npm install --save material-ui-icons
     
 
 ## JVE - fin commentaires
